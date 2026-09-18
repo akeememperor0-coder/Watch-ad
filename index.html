@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AdWatch - watch ads, get paid</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <h1>AdWatch</h1>
+  <div id="wallet-pill" class="pill hidden">Balance: <span id="balance">$0.00</span></div>
+</header>
+
+<main id="app">
+
+  <!-- AUTH SCREEN -->
+  <section id="auth-screen" class="card">
+    <div id="auth-tabs">
+      <button id="tab-login" class="tab active">Log in</button>
+      <button id="tab-signup" class="tab">Sign up</button>
+    </div>
+
+    <form id="auth-form">
+      <label>Email
+        <input type="email" id="email" required placeholder="you@example.com">
+      </label>
+      <label>Password
+        <input type="password" id="password" required minlength="6" placeholder="At least 6 characters">
+      </label>
+
+      <!-- Only shown on sign up -->
+      <label id="payout-method-field" class="hidden">Preferred payout method
+        <select id="payout-method">
+          <option value="paystack_bank">Bank transfer (Paystack)</option>
+          <option value="mobile_money">Mobile money</option>
+          <option value="paypal">PayPal</option>
+        </select>
+      </label>
+      <label id="payout-detail-field" class="hidden">Payout details (account number / phone / email)
+        <input type="text" id="payout-detail" placeholder="Depends on method chosen above">
+      </label>
+
+      <p id="auth-error" class="error hidden"></p>
+      <button type="submit" id="auth-submit">Log in</button>
+    </form>
+  </section>
+
+  <!-- WATCH SCREEN -->
+  <section id="watch-screen" class="card hidden">
+    <h2>Watch an ad, earn a payout</h2>
+    <p class="muted" id="rate-note">Loading current rate...</p>
+
+    <div id="ad-slot">
+      <div id="ad-placeholder">
+        <p>Ad will load here</p>
+      </div>
+    </div>
+
+    <button id="watch-btn">Start watching</button>
+    <div id="timer-wrap" class="hidden">
+      <div class="progress-track"><div id="progress-bar"></div></div>
+      <p id="timer-label">15s remaining</p>
+    </div>
+    <p id="watch-result" class="muted"></p>
+  </section>
+
+  <!-- WITHDRAW SCREEN -->
+  <section id="withdraw-screen" class="card hidden">
+    <h2>Withdraw</h2>
+    <p class="muted">Available balance: <span id="withdraw-balance">$0.00</span></p>
+    <label>Amount
+      <input type="number" id="withdraw-amount" min="1" step="0.01">
+    </label>
+    <button id="withdraw-btn">Request withdrawal</button>
+    <p id="withdraw-result" class="muted"></p>
+  </section>
+
+  <!-- GIFT / DONATE SCREEN -->
+  <section id="gift-screen" class="card hidden">
+    <h2>Send a gift</h2>
+    <p class="muted">Send money straight to a user's balance, or donate to support the platform generally. Paid via Paystack checkout.</p>
+    <label>Amount (NGN)
+      <input type="number" id="gift-amount" min="100" step="50" placeholder="1000">
+    </label>
+    <label>Your email (for the receipt)
+      <input type="email" id="gift-donor-email" placeholder="you@example.com">
+    </label>
+    <label>Gift to a user's referral code <span class="muted">(leave blank to donate to the platform)</span>
+      <input type="text" id="gift-recipient-code" placeholder="e.g. ab12cd34">
+    </label>
+    <button id="gift-btn">Continue to payment</button>
+    <p id="gift-result" class="muted"></p>
+  </section>
+
+  <!-- SETTINGS SCREEN -->
+  <section id="settings-screen" class="card hidden">
+    <h2>Settings</h2>
+
+    <h3 style="font-size:15px;">Your referral link</h3>
+    <p class="muted">Share this - when someone signs up and watches their first ad, you get a bonus.</p>
+    <div style="display:flex; gap:8px; margin-bottom:20px;">
+      <input type="text" id="referral-link" readonly style="margin-top:0;">
+      <button id="copy-referral-btn" style="width:auto; padding:10px 16px;">Copy</button>
+    </div>
+
+    <h3 style="font-size:15px;">Payout account</h3>
+    <p class="muted">Needed before you can withdraw. Nigerian bank accounts (NUBAN) for now.</p>
+    <label>Bank code <span class="muted">(Paystack bank code, e.g. 058 for GTBank)</span>
+      <input type="text" id="bank-code" placeholder="058">
+    </label>
+    <label>Account number
+      <input type="text" id="account-number" placeholder="0123456789">
+    </label>
+    <label>Account name
+      <input type="text" id="account-name" placeholder="As it appears on the account">
+    </label>
+    <button id="link-account-btn">Save payout account</button>
+    <p id="link-account-result" class="muted"></p>
+  </section>
+
+  <nav id="bottom-nav" class="hidden">
+    <button class="nav-btn active" data-screen="watch-screen">Watch</button>
+    <button class="nav-btn" data-screen="withdraw-screen">Withdraw</button>
+    <button class="nav-btn" data-screen="gift-screen">Gift</button>
+    <button class="nav-btn" data-screen="settings-screen">Settings</button>
+    <button id="logout-btn" class="nav-btn">Log out</button>
+  </nav>
+
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>

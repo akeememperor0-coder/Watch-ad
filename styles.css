@@ -1,0 +1,119 @@
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: -apple-system, Segoe UI, Roboto, sans-serif;
+  background: #f4f4f2;
+  color: #1a1a1a;
+  padding-bottom: 70px;
+}
+.hidden { display: none !important; }
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 16px;
+  background: #14213d;
+  color: white;
+}
+.topbar h1 { font-size: 18px; margin: 0; }
+.pill {
+  background: rgba(255,255,255,0.15);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+main { padding: 16px; max-width: 480px; margin: 0 auto; }
+
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  margin-bottom: 16px;
+}
+
+#auth-tabs { display: flex; margin-bottom: 16px; border-bottom: 1px solid #eee; }
+.tab {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  background: none;
+  font-size: 15px;
+  color: #888;
+  cursor: pointer;
+}
+.tab.active { color: #14213d; font-weight: 600; border-bottom: 2px solid #14213d; }
+
+label {
+  display: block;
+  margin-bottom: 14px;
+  font-size: 14px;
+  color: #444;
+}
+input, select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 15px;
+}
+button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: #14213d;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+}
+button:active { opacity: 0.85; }
+
+.error { color: #c0392b; font-size: 13px; }
+.muted { color: #777; font-size: 13px; }
+
+#ad-slot {
+  background: #eee;
+  border-radius: 8px;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 14px 0;
+}
+
+.progress-track {
+  height: 8px;
+  background: #eee;
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 12px 0 6px;
+}
+#progress-bar {
+  height: 100%;
+  width: 0%;
+  background: #2a9d8f;
+  transition: width 0.2s linear;
+}
+
+#bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  background: white;
+  border-top: 1px solid #eee;
+}
+.nav-btn {
+  flex: 1;
+  background: none;
+  color: #444;
+  border-radius: 0;
+  padding: 14px 0;
+  font-size: 13px;
+}
+.nav-btn.active { color: #14213d; font-weight: 600; }
